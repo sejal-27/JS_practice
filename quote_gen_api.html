@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>api_fetch</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        
+      }
+      body{
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(235, 235, 227, 0.877);
+      }
+      .container, .box-1{
+                display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+      }
+      .container{
+        border-radius: 10px;
+        background-color: rgb(255, 255, 255);
+        padding: 12px;
+        box-shadow: 3px 3px 6px 3px rgba(0, 0, 0, 0.5);
+      }
+      .box-1{
+        height: 400px;
+        width: 400px;
+        font-size: 1.5em;
+        text-align: justify;
+        text-align: center;
+        font-family: cursive;
+      }
+      #btn_1{
+        
+        border: 1px black;
+        padding: 5px;
+        color: black;
+        background-color: rgba(165, 42, 42, 0.233);
+        border-radius: 3px;
+        font-size: 1.2rem;
+
+      }
+      #btn_1:hover{
+        background-color: brown;
+        border: none;
+        padding: 5px;
+        color: white;
+        border-radius: 3px;
+        font-size: 1.2rem;
+
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      class="container"
+    >
+    <div id="quote_here" class="box-1"> </div><div class="btn_1"><button id="btn_1" >Click here to generate new quote</button></div>
+      
+    </div>
+    <script>
+      const newquote = document.getElementById("quote_here");
+      const random_quote = "https://api.quotable.io/random";
+      const btn = document.getElementById("btn_1");
+
+      btn.addEventListener("click", function () {
+        fetch(random_quote)
+          .then((response) => response.json())
+          .then((responseJson) => {
+            console.log(responseJson.content);
+            const quote = responseJson.content;
+            newquote.innerHTML = quote;
+          });
+      });
+    </script>
+  </body>
+</html>
