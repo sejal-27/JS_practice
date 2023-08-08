@@ -6,7 +6,7 @@
 body {
   height: 100vh;
   width: 100%;
-  background-color: #ffffff;
+  background-color: rgba(128, 128, 128, 0.082);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -75,4 +75,9 @@ body {
 }
 .double{
   width: 190px!important;
+}
+@media (max-width: 374px) {
+  .container{
+    transform: scale(0.75);
+  }
 }
